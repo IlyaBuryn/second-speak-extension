@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    "name": "second-speak",
+    "version": "0.4.1",
+
+    "description": "Adds a second row of subtitles in another language to the video.",
+    "icons": {
+        "48": "icons/logo-48.png"
+    },
+
+    "applications": {
+        "gecko": {
+            "id": "secondspeak@mozilla.org",
+            "strict_min_version": "45.0"
+        }
+    },
+
+    "content_security_policy": "default-src 'self'",
+
+    "browser_action": {
+        "default_icon": "icons/logo-32.png",
+        "default_title": "SecondSpeak",
+        "default_popup": "popup/choose_second-speak.html"
+    },
+
+    "permissions": [
+        "https://translate.googleapis.com/translate_a/*",
+        "activeTab",
+        "<all_urls>",
+        "webRequest",
+        "storage"
+    ],
+    
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["scripts/content_script.js"],
+            "css": ["scripts/content_script.css"]
+        }
+    ]
+}
